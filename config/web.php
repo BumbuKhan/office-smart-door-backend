@@ -50,7 +50,7 @@ $config = [
             'rules' => [
                 '/' => 'site/index',
                 '/login' => 'site/login',
-                '/logout' => 'site/logout',
+                '/logout' => 'site/logout'
             ],
         ],
 

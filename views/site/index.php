@@ -33,21 +33,17 @@ MainAsset::register($this);
         <br>
         <br>
         <br>
-        <br>
-        <br>
 
-        <div class="col-12">
-            <p>
-                <a href="<?= \yii\helpers\Url::to('/profile', true) ?>"
-                   class="btn btn-outline-primary btn-block btn-sm">Gurban Gurbanov</a>
-            </p>
-            <p>
+        <div class="col-8">
+            <span class="username"><?=Yii::$app->user->identity->firstname . ' ' . Yii::$app->user->identity->lastname?></span>
+            <span class="user-email"><?=Yii::$app->user->identity->username?></span>
+        </div>
 
+        <div class="col-4">
             <form action="<?=\yii\helpers\Url::to('/logout', true)?>" method="post">
                 <input type="hidden" name="<?=Yii::$app->request->csrfParam?>" value="<?=Yii::$app->request->csrfToken?>"/>
-                <button type="submit" class="btn btn-outline-danger btn-block btn-sm js-logout-btn">Log out</button>
+                <button type="submit" class="btn btn-link text-danger btn-sm js-logout-btn">Log out</button>
             </form>
-
             <script>
                 $(document).ready(function () {
                     $('.js-logout-btn').on('click', function () {
@@ -55,7 +51,6 @@ MainAsset::register($this);
                     });
                 });
             </script>
-            </p>
         </div>
 
         <div class="col-12 text-center mt-5">

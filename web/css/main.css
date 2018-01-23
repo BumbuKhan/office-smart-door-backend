@@ -1,0 +1,11 @@
+.username {
+    font-size: 16px;
+    display: inline-block;
+    position: relative;
+    bottom: -4px;
+}
+
+.user-email {
+    font-size: 13px;
+    color: #999;
+}
