@@ -84,8 +84,20 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         $log = new Log();
 
+        $log->user_id = Yii::$app->user->identity->getId();
         $log->action = $log::LOG_ACTION_LOGIN;
         $log->description = 'User ' . Yii::$app->user->identity->firstname . ' ' . Yii::$app->user->identity->lastname . ' has logged in';
+
+        $log->save();
+    }
+
+    public function beforeLogout($event)
+    {
+        $log = new Log();
+
+        $log->user_id = Yii::$app->user->identity->getId();
+        $log->action = $log::LOG_ACTION_LOGOUT;
+        $log->description = 'User ' . Yii::$app->user->identity->firstname . ' ' . Yii::$app->user->identity->lastname . ' has logged out';
 
         $log->save();
     }

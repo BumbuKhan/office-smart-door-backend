@@ -24,6 +24,9 @@ $config = [
             'enableAutoLogin' => true,
             'on afterLogin' => function ($event) {
                 Yii::$app->user->identity->afterLogin($event);
+            },
+            'on beforeLogout' => function ($event) {
+                Yii::$app->user->identity->beforeLogout($event);
             }
         ],
         'errorHandler' => [
