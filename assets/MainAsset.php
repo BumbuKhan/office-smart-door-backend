@@ -22,7 +22,9 @@ class MainAsset extends AssetBundle
     public $css = [
         'css/main.css',
     ];
-    public $js = [];
+    public $js = [
+        'js/main.js'
+    ];
     public $jsOptions = ['position' => \yii\web\View::POS_HEAD];
     public $depends = [];
 }

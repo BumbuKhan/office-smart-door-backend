@@ -30,7 +30,7 @@ MainAsset::register($this);
                 </div>
 
                 <div class="col-12 text-center mt-3">
-                    <p style="color: #999;">Tap to open</p>
+                    <p style="color: #999;" class="state-message">Tap to open</p>
                 </div>
 
                 <div class="col-12 text-center">
