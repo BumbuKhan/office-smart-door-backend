@@ -20,7 +20,7 @@ MainAsset::register($this);
         <div class="col-12 text-center">
             <div class="row">
                 <div class="col-12 text-center mt-4">
-                    <div class="lock lock__closed">
+                    <div class="lock lock__closed" data-api-url="<?=\yii\helpers\Url::to('/door/open', true)?>">
 
                         <i class="fa lock__icon" aria-hidden="true"></i>
                         <span class="text-muted">Opening...</span>

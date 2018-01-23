@@ -1,6 +1,7 @@
 $(document).ready(function(){
     var lock = $('.lock');
     var stateMessage = $('.state-message');
+    var API_URL = lock.attr('data-api-url');
 
     lock.on('click', function(){
         var _this = $(this);
