@@ -9,3 +9,131 @@
     font-size: 13px;
     color: #999;
 }
+
+.lock {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+    background-color: #ffffff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border-width: 6px;
+    border-style: solid;
+    cursor: pointer;
+}
+
+.lock__icon {
+    font-size: 60px !important;
+    position: relative;
+    bottom: -5px;
+}
+
+.lock__closed {
+    border-color: red;
+    -webkit-box-shadow: 0 0 30px 2px rgba(255, 0, 0, .2);
+    -moz-box-shadow: 0 0 30px 2px rgba(255, 0, 0, .2);
+    box-shadow: 0 0 30px 2px rgba(255, 0, 0, .2);
+    animation: pulse 1s infinite;
+}
+
+.lock__opened {
+    border-color: #00a600;
+    -webkit-box-shadow: 0 0 30px 2px rgba(0, 255, 0, .2);
+    -moz-box-shadow: 0 0 30px 2px rgba(0, 255, 0, .2);
+    box-shadow: 0 0 30px 2px rgba(0, 255, 0, .2);
+}
+
+.lock__opening {
+    border-color: #999;
+}
+
+.lock span {
+    position: relative;
+    top: -5px;
+    display: none;
+}
+
+.lock__opening span {
+    display: inline-block;
+}
+
+.lock__closed .lock__icon {
+    color: red;
+}
+
+.lock__closed .lock__wave_1 {
+    border-color: red;
+}
+
+.lock__opened .lock__icon {
+    color: #00a600;
+}
+
+.lock__opened .lock__wave_1 {
+    border-color: #00a600;
+}
+
+.lock__opening .lock__wave_1 {
+    display: none;
+}
+
+.lock__closed .lock__icon:before {
+    content: "\f023";
+}
+
+.lock__opened .lock__icon:before {
+    content: "\f09c";
+}
+
+.lock__wave {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    display: inline-block;
+    width: 140px;
+    height: 140px;
+    background-color: transparent;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border-width: 2px;
+    border-style: solid;
+    opacity: .4;
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.lock__opening:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 7px solid #f6f;
+    border-top-color: #0e0;
+    border-right-color: #0eb9be;
+    border-bottom-color: #ff9719;
+    animation: spinner .6s linear infinite;
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4);
+    }
+    70% {
+        -webkit-box-shadow: 0 0 0 15px rgba(204, 169, 44, 0);
+    }
+    100% {
+        -webkit-box-shadow: 0 0 0 15px rgba(204, 169, 44, 0);
+    }
+}

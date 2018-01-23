@@ -22,6 +22,8 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/app.css',
     ];
-    public $js = [];
+    public $js = [
+        'https://use.fontawesome.com/752e530012.js',
+    ];
     public $depends = [];
 }
