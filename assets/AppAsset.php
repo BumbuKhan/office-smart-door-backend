@@ -23,7 +23,7 @@ class AppAsset extends AssetBundle
         'css/app.css',
     ];
     public $js = [
-        'https://use.fontawesome.com/752e530012.js',
+        'https://use.fontawesome.com/752e530012.js'
     ];
     public $depends = [];
 }

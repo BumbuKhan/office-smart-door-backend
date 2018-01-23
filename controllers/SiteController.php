@@ -68,10 +68,14 @@ class SiteController extends Controller
         $curl = new curl\Curl();
 
         //get http://example.com/
-        $response = $curl->get('http://example.com/');
+        //$response = $curl->get(Yii::$app->params['IOT_DOOR_OPEN_URL']);
+        $response = $curl->get('http://example.com/'); // faking
 
         if ($curl->errorCode === null) {
-            return $response;
+            return [
+                'success' => true,
+                'message' => 'Welcome Jamila!'
+            ];
         } else {
             return [
                 'success' => false,
