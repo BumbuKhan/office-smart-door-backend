@@ -32,14 +32,10 @@ MainAsset::register($this);
                 <div class="col-12 text-center mt-3">
                     <p style="color: #999;" class="state-message">Tap to open</p>
                 </div>
-
-                <div class="col-12 text-center">
-                    <p class="text-muted" style="font-size: 13px;">⚠ You have to be in front of the door ⚠</p>
-                </div>
             </div>
         </div>
 
-        <div class="col-sm-6 offset-sm-3 pb-2">
+        <div class="col-sm-6 offset-sm-3 mt-2 pb-2">
             <div class="row">
                 <div class="col-12">
                     <hr>
@@ -53,7 +49,10 @@ MainAsset::register($this);
                     <form action="<?= \yii\helpers\Url::to('/logout', true) ?>" method="post">
                         <input type="hidden" name="<?= Yii::$app->request->csrfParam ?>"
                                value="<?= Yii::$app->request->csrfToken ?>"/>
-                        <button type="submit" class="btn btn-link text-danger btn-sm js-logout-btn">Log out</button>
+                        <button type="submit" class="btn btn-outline-danger btn-sm js-logout-btn"
+                                style="position: relative; bottom: -11px;">
+                            Log out
+                        </button>
                     </form>
                     <script>
                         $(document).ready(function () {
