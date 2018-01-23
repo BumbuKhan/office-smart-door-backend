@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 24, 2018 at 12:01 AM
+-- Generation Time: Jan 24, 2018 at 01:41 AM
 -- Server version: 5.6.38
 -- PHP Version: 7.0.26
 
@@ -33,6 +33,7 @@ CREATE TABLE `log` (
   `user_id` int(11) NOT NULL,
   `action` enum('login','logout','door_open') NOT NULL,
   `description` varchar(255) NOT NULL,
+  `additional_data` text,
   `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -76,7 +77,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
