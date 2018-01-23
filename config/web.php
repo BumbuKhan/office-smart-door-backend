@@ -22,6 +22,9 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\Users',
             'enableAutoLogin' => true,
+            'on afterLogin' => function ($event) {
+                Yii::$app->user->identity->afterLogin($event);
+            }
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',

@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\base\NotSupportedException;
+use app\models\Log;
 
 /**
  * This is the model class for table "users".
@@ -69,11 +70,23 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return $this->auth_key === $authKey;
     }
 
-    public static function findByUsername($username) {
+    public static function findByUsername($username)
+    {
         return self::findOne(['username' => $username]);
     }
 
-    public function validatePassword($password) {
+    public function validatePassword($password)
+    {
         return Yii::$app->getSecurity()->validatePassword($password, $this->password);
+    }
+
+    public function afterLogin($event)
+    {
+        $log = new Log();
+
+        $log->action = $log::LOG_ACTION_LOGIN;
+        $log->description = 'User ' . Yii::$app->user->identity->firstname . ' ' . Yii::$app->user->identity->lastname . ' has logged in';
+
+        $log->save();
     }
 }
