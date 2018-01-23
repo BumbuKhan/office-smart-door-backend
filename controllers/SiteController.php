@@ -44,6 +44,8 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+//        die(Yii::$app->getSecurity()->generatePasswordHash('12345678'));
+
         if (Yii::$app->user->isGuest) {
             return $this->redirect('/login');
         }
