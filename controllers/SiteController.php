@@ -7,6 +7,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
+use app\models\Log;
 use linslin\yii2\curl;
 
 class SiteController extends Controller
@@ -57,12 +58,14 @@ class SiteController extends Controller
     public function actionOpenDoor()
     {
         Yii::$app->response->format = yii\web\Response::FORMAT_JSON;
+        $response_data = [
+            'success' => false,
+            'message' => 'Unknown error'
+        ];
 
         if (Yii::$app->user->isGuest) {
-            return [
-                'success' => false,
-                'message' => 'Authentication needed'
-            ];
+            $response_data['message'] = 'Authentication needed';
+            return $response_data;
         }
 
         $curl = new curl\Curl();
@@ -72,16 +75,17 @@ class SiteController extends Controller
         $response = $curl->get('http://example.com/'); // faking
 
         if ($curl->errorCode === null) {
-            return [
-                'success' => true,
-                'message' => 'Welcome Jamila!'
-            ];
+            $response_data['success'] = true;
+            $response_data['message'] = 'Welcome ' . Yii::$app->user->identity->firstname . ' ' .Yii::$app->user->identity->lastname . '!';
         } else {
-            return [
-                'success' => false,
-                'message' => 'Couldn\'t open the door... try to use window'
-            ];
+            $response_data['success'] = false;
+            $response_data['message'] = 'Couldn\'t open the door... try to use window';
         }
+
+        // adding to log
+        Yii::$app->user->identity->onDoorOpen($response_data);
+
+        return $response_data;
     }
 
     public function actionLogin()

@@ -11,6 +11,7 @@ use Yii;
  * @property int $user_id
  * @property string $action
  * @property string $description
+ * @property string $additional_data
  * @property string $datetime
  */
 class Log extends \yii\db\ActiveRecord
@@ -35,7 +36,7 @@ class Log extends \yii\db\ActiveRecord
         return [
             [['user_id', 'action', 'description'], 'required'],
             [['user_id'], 'integer'],
-            [['action'], 'string'],
+            [['action', 'additional_data'], 'string'],
             [['datetime'], 'safe'],
             [['description'], 'string', 'max' => 255],
         ];
@@ -51,6 +52,7 @@ class Log extends \yii\db\ActiveRecord
             'user_id' => 'User ID',
             'action' => 'Action',
             'description' => 'Description',
+            'additional_data' => 'Additional Data',
             'datetime' => 'Datetime',
         ];
     }
