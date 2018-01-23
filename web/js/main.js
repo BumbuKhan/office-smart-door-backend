@@ -31,10 +31,10 @@ $(document).ready(function () {
 
                 if (response) {
                     _this.removeClass('lock__opening');
+                    stateMessage.text(response.message);
 
                     if (response.success) {
                         _this.addClass('lock__opened');
-                        stateMessage.text(response.message);
 
                         setTimeout(function () {
                             _this
@@ -45,7 +45,6 @@ $(document).ready(function () {
                         }, stateDelay);
                     } else {
                         _this.addClass('lock__closed');
-                        stateMessage.text(response.message);
 
                         setTimeout(function () {
                             stateMessage.text('Tap to open');

@@ -71,12 +71,27 @@ class SiteController extends Controller
         $curl = new curl\Curl();
 
         //get http://example.com/
-        //$response = $curl->get(Yii::$app->params['IOT_DOOR_OPEN_URL']);
-        $response = $curl->get('http://example.com/'); // faking
+        //$response = $curl->get(Yii::$app->params['IOT_DOOR_OPEN_URL']); // do not forget to convert JSON to array!!!
+        $response = [
+            'success' => false,
+            'errors' => ['pir_sensor' => 'Man does not detected']
+        ];
 
         if ($curl->errorCode === null) {
-            $response_data['success'] = true;
-            $response_data['message'] = 'Welcome ' . Yii::$app->user->identity->firstname . ' ' .Yii::$app->user->identity->lastname . '!';
+
+            if (!$response['success']) {
+                $response_data['success'] = false;
+
+                // most likely someone will try to open door without standing in front of it...
+                if (isset($response['errors']['pir_sensor'])) {
+                    $response_data['message'] = 'You have to be in front of the door';
+                } else {
+                    $response_data['message'] = 'Some internal error...';
+                }
+            } else {
+                $response_data['success'] = true;
+                $response_data['message'] = 'Welcome ' . Yii::$app->user->identity->firstname . '!';
+            }
         } else {
             $response_data['success'] = false;
             $response_data['message'] = 'Couldn\'t open the door... try to use window';
