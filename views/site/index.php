@@ -52,8 +52,5 @@ MainAsset::register($this);
                 });
             </script>
         </div>
-
-        <div class="col-12 text-center mt-5">
-        </div>
     </div>
 </div>
