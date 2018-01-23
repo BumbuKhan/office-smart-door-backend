@@ -7,6 +7,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
+use linslin\yii2\curl;
 
 class SiteController extends Controller
 {
@@ -51,6 +52,32 @@ class SiteController extends Controller
         }
 
         return $this->render('index');
+    }
+
+    public function actionOpenDoor()
+    {
+        Yii::$app->response->format = yii\web\Response::FORMAT_JSON;
+
+        if (Yii::$app->user->isGuest) {
+            return [
+                'success' => false,
+                'message' => 'Authentication needed'
+            ];
+        }
+
+        $curl = new curl\Curl();
+
+        //get http://example.com/
+        $response = $curl->get('http://example.com/');
+
+        if ($curl->errorCode === null) {
+            return $response;
+        } else {
+            return [
+                'success' => false,
+                'message' => 'Couldn\'t open the door... try to use window'
+            ];
+        }
     }
 
     public function actionLogin()
