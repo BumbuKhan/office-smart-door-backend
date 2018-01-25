@@ -3,8 +3,8 @@
 return [
     'class' => 'yii\db\Connection',
     'dsn' => 'mysql:host=localhost;dbname=office-smart-door',
-    'username' => 'root',
-    'password' => '',
+    'username' => 'root', // 'smart-door-user'
+    'password' => '', // 'mafu#hrF9shA'
     'charset' => 'utf8',
 
     // Schema cache options (for production environment)
