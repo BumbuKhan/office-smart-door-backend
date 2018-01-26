@@ -2,6 +2,7 @@
 
 return [
     'adminEmail' => 'admin@example.com',
+    'cookieValidationKey' => 'super-secret-key',
 
     // this is the static IP address that ESP8266 is connected to
     // I'll also provide a super secret token for additional secure
