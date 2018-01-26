@@ -87,6 +87,7 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         $log->user_id = Yii::$app->user->identity->getId();
         $log->action = $log::LOG_ACTION_LOGIN;
         $log->description = 'User ' . Yii::$app->user->identity->firstname . ' ' . Yii::$app->user->identity->lastname . ' has logged in';
+        $log->user_ip = Yii::$app->request->userIP;
 
         $log->save();
     }
@@ -98,6 +99,7 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         $log->user_id = Yii::$app->user->identity->getId();
         $log->action = $log::LOG_ACTION_LOGOUT;
         $log->description = 'User ' . Yii::$app->user->identity->firstname . ' ' . Yii::$app->user->identity->lastname . ' has logged out';
+        $log->user_ip = Yii::$app->request->userIP;
 
         $log->save();
     }
