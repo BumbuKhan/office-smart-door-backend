@@ -109,7 +109,8 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         $log->user_id = Yii::$app->user->identity->getId();
         $log->action = $log::LOG_ACTION_DOOR_OPEN;
         $log->description = 'User ' . Yii::$app->user->identity->firstname . ' ' . Yii::$app->user->identity->lastname . ' has just opened the door';
-        $log->additional_data = json_encode($response_data);
+        $log->response_data = json_encode($response_data);
+        $log->user_ip = Yii::$app->request->userIP;
 
         $log->save();
     }
